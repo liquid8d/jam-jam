@@ -1,6 +1,15 @@
 @tool
 extends Panel
+
 @onready var grid_container: GridContainer = %GridContainer
+@onready var label: Label = %Label
+
+@export var instrument:String = "keyboard" :
+	set(value):
+		instrument = value
+		if label:
+			label.text = value.to_upper()
+		add_presets()
 
 func _ready() -> void:
 	add_presets()
@@ -10,7 +19,7 @@ func add_presets():
 		child.free()
 
 	for item in JamJam.presets:
-		if item.instrument == "keyboard":
+		if item.instrument == instrument:
 			var btn = Button.new()
 			btn.custom_minimum_size = Vector2(128, 96)
 			btn.name = item.name

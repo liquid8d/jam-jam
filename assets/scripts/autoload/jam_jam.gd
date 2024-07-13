@@ -8,7 +8,13 @@ const presets = [
 	{ name = "midi.piano5", label = "Electric Piano 1", type = "MIDI", instrument = "keyboard" },
 	{ name = "midi.piano6", label = "Electric Piano 2", type = "MIDI", instrument = "keyboard" },
 	{ name = "midi.piano7", label = "Harpsichord", type = "MIDI", instrument = "keyboard" },
-	{ name = "midi.piano8", label = "Clavi", type = "MIDI", instrument = "keyboard" }
+	{ name = "midi.piano8", label = "Clavi", type = "MIDI", instrument = "keyboard" },
+	{ name = "drumkit.1", label = "Simple Drumkit", type = "DRUMKIT", instrument = "drums" },
+	{ name = "drumkit.2", label = "SiON Drumkit", type = "DRUMKIT", instrument = "drums" },
+	{ name = "drumkit.3", label = "Midi Drumkit", type = "DRUMKIT", instrument = "drums" },
+	{ name = "valsound.guitar18", label = "Soft Distortion", type = "GUITAR", instrument = "guitar" },
+	{ name = "valsound.guitar9", label = "Feed-back", type = "GUITAR", instrument = "guitar" },
+	{ name = "valsound.guitar17", label = "METAL", type = "GUITAR", instrument = "guitar" },
 ]
 
 var driver := SiONDriver.create()
