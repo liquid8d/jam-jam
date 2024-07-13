@@ -21,10 +21,11 @@ func _ready():
 func play_on_enter(body:Node3D, drum):
 	if drum.has("voice"):
 		JamJam.set_voice(drum.voice)
+	elif not JamJam._current_voice:
+		JamJam.set_voice("drumkit.2")
+	JamJam.play(drum.note, drum.length)
 	if drum.has("shaker"):
 		(drum.shaker as ShakerComponent3D).play_shake()
-	JamJam.play(drum.note, drum.length)
-
 
 func _on_drumstick_picked_up(pickable: Variant) -> void:
 	print("picked up drumstick:")

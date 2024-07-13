@@ -20,7 +20,8 @@ const presets = [
 var driver := SiONDriver.create()
 var preset := SiONVoicePresetUtil.new()
 var voice:SiONVoice
-var _current_voice = "midi.guitar4" :
+
+var _current_voice = "" :
 	set(value):
 		if _current_voice != value:
 			_current_voice = value

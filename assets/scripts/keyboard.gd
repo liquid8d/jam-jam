@@ -65,5 +65,6 @@ func _ready() -> void:
 			key.node.body_entered.connect(play_on_enter.bindv([key.note, key.length]))
 
 func play_on_enter(body:Node3D, note, length):
-	print("body entered!")
+	if not JamJam._current_voice:
+		JamJam.set_voice("midi.piano1")
 	JamJam.play(note, length)

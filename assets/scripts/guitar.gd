@@ -57,4 +57,6 @@ func _play_string(body, string:int):
 		play_note(note)
 
 func play_note(note, length = 16):
+	if not JamJam._current_voice:
+		JamJam.set_voice("valsound.guitar18")
 	JamJam.play(note, length)
