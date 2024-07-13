@@ -7,15 +7,15 @@ extends Panel
 @export var instrument:String = "keyboard" : set = set_instrument
 
 func _ready() -> void:
-	add_presets()
+	set_instrument(instrument)
 
 func set_instrument(value):
 	instrument = value
 	if label:
 		label.text = value.to_upper()
-		add_presets()
+		update_presets()
 
-func add_presets():
+func update_presets():
 	for child in grid_container.get_children():
 		child.free()
 
