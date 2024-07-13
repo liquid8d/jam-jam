@@ -2,7 +2,6 @@ extends Node3D
 @onready var keys_cast: ShapeCast3D = %KeysCast
 
 var kit
-var voice = "valsound.piano1"
 
 func _ready() -> void:
 	kit = [
@@ -37,5 +36,4 @@ func _ready() -> void:
 
 func play_on_enter(body:Node3D, note, length):
 	print("body entered!")
-	JamJam.set_voice(voice)
 	JamJam.play(note, length)

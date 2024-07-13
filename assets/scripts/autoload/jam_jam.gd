@@ -1,10 +1,24 @@
 extends Node3D
 
+const presets = [
+	{ name = "midi.piano1", label = "Grand Piano", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano2", label = "Bright Piano", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano3", label = "Electric Grand", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano4", label = "Honky Tonk", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano5", label = "Electric Piano 1", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano6", label = "Electric Piano 2", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano7", label = "Harpsichord", type = "MIDI", instrument = "keyboard" },
+	{ name = "midi.piano8", label = "Clavi", type = "MIDI", instrument = "keyboard" }
+]
+
 var driver := SiONDriver.create()
 var preset := SiONVoicePresetUtil.new()
 var voice:SiONVoice
-var _current_voice = "midi.guitar4" : set = set_voice
-#valsound.piano1
+var _current_voice = "midi.guitar4" :
+	set(value):
+		if _current_voice != value:
+			_current_voice = value
+			voice = preset.get_voice_preset(value)
 
 func _ready() -> void:
 	add_child(driver)
@@ -27,7 +41,5 @@ func play(note, length:float = 64):
 	driver.note_on(note, voice, length)
 	#driver.play("t100 l8 [ ccggaag4 ffeeddc4 | [ggffeed4]2 ]2")
 
-func set_voice(value):
-	if _current_voice != value:
-		_current_voice = value
-		voice = preset.get_voice_preset(value)
+func set_voice(voice:String):
+	_current_voice = voice
