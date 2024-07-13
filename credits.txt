@@ -1,5 +1,10 @@
+Asset Libs:
+"GDSiON" by YuriSizov (https://github.com/YuriSizov/gdsion) is provided under an MIT license. Original SiON software synthesizer library is provided under an MIT license.
+"Shaker" by Eneskp3441 (https://godotengine.org/asset-library/asset/1596) CC0 1.0 Universal
+
+Models:
+"Godot Plush by FR3NKD" (https://fr3nkd.gumroad.com/l/vhfvy)
 "Drum Kit" (https://skfb.ly/6ZpKO) by Serg.Morgun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Electric Guitar" (https://skfb.ly/6Z7NQ) by Flow Studio is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Right Side Drumstick (rigged)" (https://skfb.ly/oOVWQ) by AGUNG.IHACKSTUFF@GMAIL.COM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Keyboard" (https://skfb.ly/oE6F7) by YieldingMist206 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-"Godot Plush by FR3NKD" (https://fr3nkd.gumroad.com/l/vhfvy) 
