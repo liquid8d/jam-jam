@@ -1,38 +1,49 @@
 extends Node3D
-@onready var pick_area: Area3D = $PickArea
 
+# TODO on fret collision for each string, store highest fret currently pressed
 var kit
 var voice = "alsound.guitar10"
 
-func _ready() -> void:
-	kit = [
-		{ node = $Key1, note = 20, length = 16  },
-		{ node = $Key2, note = 21, length = 16  },
-		{ node = $Key3, note = 22, length = 16  },
-		{ node = $Key4, note = 23, length = 16  },
-		{ node = $Key5, note = 24, length = 16  },
-		{ node = $Key6, note = 25, length = 16  },
-		{ node = $Key7, note = 26, length = 16  },
-		{ node = $Key8, note = 27, length = 16  },
-		{ node = $Key9, note = 28, length = 16  },
-		{ node = $Key10, note = 29, length = 16  },
-		{ node = $Key11, note = 30, length = 16  },
-		{ node = $Key12, note = 31, length = 16  },
-		{ node = $Key13, note = 32, length = 16  },
-		{ node = $Key14, note = 33, length = 16  }
-	]
-	# TODO we want to store pressed frets, and only play when pick hits PickArea
-	for fret in kit:
-		print(fret)
-		if fret.node:
-			fret.node.body_entered.connect(play_on_enter.bindv([fret.note, fret.length]))
-	
-	pick_area.body_entered.connect(play_on_enter.bindv([40, 16]))
+var frets:Array = [ [], [], [], [], [], [] ]
 
-func play_on_enter(body:Node3D, note, length):
-	#if body.is_in_group("guitar_pick"):
-	print("body entered!")
+func _ready() -> void:
+	for x in range(0, 6):
+		# connect each string to play string on collision
+		var string_pick:Area3D = get_node("Pick" + str(x))
+		if string_pick:
+			print("connect string ", x)
+			string_pick.body_entered.connect(_play_string.bindv([x]))
+			# connect each fret to note_on/note_off
+			for y in range(1, 25):
+				## listen for frets
+				var fret:Area3D = get_node("String" + str(x) + "/Key" + str(y))
+				if fret:
+					print("   connect fret: ", y)
+					fret.body_entered.connect(_note_on.bindv([ x, (x + 1) * y ]))
+					fret.body_exited.connect(_note_off.bindv([ x, (x + 1) * y ]))
+
+func _note_on(body, string:int, note:int):
+	if body.is_in_group("PlayerHands"):
+		if not frets[string].has(note):
+			frets[string].append(note)
+			print_rich("note_on: string [color=green]%s[/color]  note [color=blue]%s[/color]" % [string, note])
+
+func _note_off(body, string:int, note:int):
+	if body.is_in_group("PlayerHands"):
+		# remove note
+		if frets[string].has(note):
+			var pos = frets[string].find(note)
+			frets[string].remove_at(pos)
+			print_rich("note_off: string [color=red]%s[/color]  note [color=blue]%s[/color]" % [string, note])
+
+func _play_string(body, string:int):
+	if body.is_in_group("PlayerHands"):
+		# get highest fret on string that is currently pressed
+		var play_fret = frets[string].sort()[frets[string].length()]
+		var note = (string + 1) * play_fret
+		print_rich("[color=orange]string pick: %s[/color] note [color=blue]%s[/color]" % [string, note])
+		play_note(note)
+
+func play_note(note, length = 16):
 	JamJam.set_voice(voice)
 	JamJam.play(note, length)
-	#else:
-		#print("body entered, but not a pick")
