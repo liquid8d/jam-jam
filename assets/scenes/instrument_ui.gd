@@ -4,15 +4,16 @@ extends Panel
 @onready var grid_container: GridContainer = %GridContainer
 @onready var label: Label = %Label
 
-@export var instrument:String = "keyboard" :
-	set(value):
-		instrument = value
-		if label:
-			label.text = value.to_upper()
-		add_presets()
+@export var instrument:String = "keyboard" : set = set_instrument
 
 func _ready() -> void:
 	add_presets()
+
+func set_instrument(value):
+	instrument = value
+	if label:
+		label.text = value.to_upper()
+		add_presets()
 
 func add_presets():
 	for child in grid_container.get_children():
