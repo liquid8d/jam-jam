@@ -24,3 +24,10 @@ func play_on_enter(body:Node3D, drum):
 	if drum.has("shaker"):
 		(drum.shaker as ShakerComponent3D).play_shake()
 	JamJam.play(drum.note, drum.length)
+
+
+func _on_drumstick_picked_up(pickable: Variant) -> void:
+	print("picked up drumstick:")
+	print(pickable)
+	# TODO add haptic feedback on collision here?
+	
