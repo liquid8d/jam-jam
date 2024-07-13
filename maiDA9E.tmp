@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://df73gq6ixwo76"]
+
+[ext_resource type="PackedScene" uid="uid://ctx2nwn65bhw6" path="res://assets/scenes/room.tscn" id="1_jgx71"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="3_3ym1l"]
+[ext_resource type="PackedScene" uid="uid://ugjm356gtmxo" path="res://assets/scenes/XRPlayer.tscn" id="3_w8xgm"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Room" parent="." instance=ExtResource("1_jgx71")]
+
+[node name="XrPlayer" parent="." instance=ExtResource("3_w8xgm")]
+transform = Transform3D(0.615152, 0, -0.788408, 0, 1, 0, 0.788408, 0, 0.615152, 0.196265, -1.19209e-07, 1.29133)
+
+[node name="PlayerBody2" parent="XrPlayer" instance=ExtResource("3_3ym1l")]
