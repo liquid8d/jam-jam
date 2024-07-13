@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://baqld30k1h727"
-path="res://.godot/imported/drum_kit.glb-56241eb6bfd6cc2932c63c4bbc967c48.scn"
+uid="uid://cbiexapfdwv3b"
+path="res://.godot/imported/right_side_drumstick_rigged.glb-a1c57716b734bd1b213dbd5fd74dca65.scn"
 
 [deps]
 
-source_file="res://assets/mesh/drum_kit.glb"
-dest_files=["res://.godot/imported/drum_kit.glb-56241eb6bfd6cc2932c63c4bbc967c48.scn"]
+source_file="res://assets/mesh/right_side_drumstick_rigged.glb"
+dest_files=["res://.godot/imported/right_side_drumstick_rigged.glb-a1c57716b734bd1b213dbd5fd74dca65.scn"]
 
 [params]
 
