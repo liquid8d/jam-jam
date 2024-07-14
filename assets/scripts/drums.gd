@@ -3,7 +3,6 @@ extends Node3D
 var kit 
 
 var left_controller:XRController3D
-var held_by = {}
 var right_controller:XRController3D
 
 func _ready():
