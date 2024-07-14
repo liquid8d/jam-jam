@@ -46,7 +46,7 @@ func _fret_off(body, string:int, fret:int):
 		print("body off fret, but not playerhands")
 
 func _play_string(body, string:int):
-	if body.name == "PokeBody":
+	if body.name == "PokeBody" or body.is_in_group("guitar_pick"):
 		const starting_note = 10
 		# TODO if no fret pressed, first note on string
 		# get highest fret on string that is currently pressed
