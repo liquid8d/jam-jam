@@ -144,7 +144,7 @@ func _ready() -> void:
 		#set_voice("valsound.percus25", "drums")
 		#play(i, 2000)
 		#await get_tree().create_timer(1).timeout
-	
+
 func play(note, length:float = 16):
 	print("play note %s on %s" % [note, _current_voice])
 	driver.volume
