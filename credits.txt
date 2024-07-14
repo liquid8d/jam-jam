@@ -8,3 +8,6 @@ Models:
 "Electric Guitar" (https://skfb.ly/6Z7NQ) by Flow Studio is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Right Side Drumstick (rigged)" (https://skfb.ly/oOVWQ) by AGUNG.IHACKSTUFF@GMAIL.COM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Keyboard" (https://skfb.ly/oE6F7) by YieldingMist206 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Textures:
+"Cobblestone Street Night" on Poly Haven; Greg Zaal, Jandre van Heerden (https://polyhaven.com/a/cobblestone_street_night) CC0 License
