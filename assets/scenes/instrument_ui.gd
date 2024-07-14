@@ -28,9 +28,9 @@ func update_presets():
 			btn.text = item.label
 			if item.has("type"):
 				btn.get_node("Type").text = item.type
-			btn.pressed.connect(_on_voice_select.bindv([item.name]))
+			btn.pressed.connect(_on_voice_select.bindv([item.name, instrument]))
 			grid_container.add_child(btn)
 			btn.owner = self
 
-func _on_voice_select(name:String):
-	JamJam.set_voice(name)
+func _on_voice_select(name:String, instrument:String):
+	JamJam.set_voice(name, instrument)
