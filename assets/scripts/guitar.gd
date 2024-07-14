@@ -31,7 +31,7 @@ func _fret_on(body, string:int, fret:int):
 	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
-	if body.name == "PokeBody" or body.is_in_group("PlayerHands"): 
+	if body.name == "BoneBody" or body.name == "PokeBody" or body.is_in_group("PlayerHands"): 
 		if not frets[string - 1].has(fret):
 			frets[string - 1].append(fret)
 			print_rich("fret_on: string [color=green]%s[/color]  fret [color=blue]%s[/color]" % [string, fret])
@@ -43,7 +43,7 @@ func _fret_off(body, string:int, fret:int):
 	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
-	if body.name == "PokeBody" or body.is_in_group("PlayerHands"):
+	if body.name == "BoneBody" or "PokeBody" or body.is_in_group("PlayerHands"):
 		# remove note
 		if frets[string - 1].has(fret):
 			var pos = frets[string - 1].find(fret)
@@ -57,7 +57,7 @@ func _play_string(body, string:int):
 	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
-	if body.name == "PokeBody" or body.is_in_group("PlayerHands") or body.is_in_group("guitar_pick"):
+	if body.name == "BoneBody" or body.name == "PokeBody" or body.is_in_group("PlayerHands") or body.is_in_group("guitar_pick"):
 		const starting_note = 0
 		# TODO if no fret pressed, first note on string
 		# get highest fret on string that is currently pressed
