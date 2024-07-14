@@ -6,7 +6,7 @@ var kit = []
 
 func _ready() -> void:
 	const start_at = 10
-	for i in range(89):
+	for i in range(1, 89):
 		kit.append({ node = get_node("Key" + str(i + 1)), note = start_at + (i + 1), length = 16 })
 
 	for key in kit:
