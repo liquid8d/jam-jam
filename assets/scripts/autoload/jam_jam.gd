@@ -78,6 +78,7 @@ var preset := SiONVoicePresetUtil.new()
 var voice:SiONVoice
 var left_controller:XRController3D
 var right_controller:XRController3D
+var _instrument = ""
 
 var _current_voice = "" :
 	set(value):
@@ -98,7 +99,7 @@ func _ready() -> void:
 	#await get_tree().create_timer(3).timeout
 	#for i in range(30, 120):
 ##		valsound.percus25 65, 71, 85
-		#set_voice("valsound.percus25")
+		#set_voice("valsound.percus25", "drums")
 		#play(i, 2000)
 		#await get_tree().create_timer(1).timeout
 	
@@ -114,7 +115,7 @@ func find_controllers():
 	right_controller = XRHelpers.get_right_controller(player)
 
 func haptics(body):
-	print("try haptics with body: ", body.name)
+	#print("try haptics with body: ", body.name)
 	if body.has_meta("hand"):
 		if not left_controller or not right_controller:
 			find_controllers()
@@ -128,5 +129,6 @@ func haptics(body):
 					#print("right haptic!")
 					right_controller.trigger_haptic_pulse("haptic", 0.1, 0.1, 0.2, 0.2)
 
-func set_voice(voice:String):
+func set_voice(voice:String, instrument:String = ""):
+	_instrument = instrument
 	_current_voice = voice

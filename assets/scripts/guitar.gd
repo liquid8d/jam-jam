@@ -58,7 +58,7 @@ func _play_string(body, string:int):
 	if body.name == "GuitarPickableObject":
 		return
 	if body.name == "PokeBody" or body.is_in_group("PlayerHands") or body.is_in_group("guitar_pick"):
-		const starting_note = 10
+		const starting_note = 0
 		# TODO if no fret pressed, first note on string
 		# get highest fret on string that is currently pressed
 		frets[string - 1].sort()
@@ -73,5 +73,5 @@ func _play_string(body, string:int):
 
 func play_note(note, length = 16):
 	if not JamJam._current_voice:
-		JamJam.set_voice("valsound.lead2")
+		JamJam.set_voice("valsound.lead2", "guitar")
 	JamJam.play(note, length)

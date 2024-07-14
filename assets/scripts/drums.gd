@@ -23,11 +23,11 @@ func play_on_enter(body:Node3D, drum):
 	#print (drum.name)
 	#print(body)
 	if drum.has("kit"):
-		JamJam.set_voice(drum.kit)
+		JamJam.set_voice(drum.kit, "drums")
 	elif drum.has("voice"):
-		JamJam.set_voice(drum.voice)
+		JamJam.set_voice(drum.voice, "drums")
 	elif not JamJam._current_voice:
-		JamJam.set_voice("drumkit.1")
+		JamJam.set_voice("drumkit.1", "drums")
 	JamJam.play(drum.note, drum.length)
 	if drum.has("shaker"):
 		(drum.shaker as ShakerComponent3D).play_shake()

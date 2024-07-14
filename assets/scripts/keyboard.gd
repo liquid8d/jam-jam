@@ -66,6 +66,6 @@ func _ready() -> void:
 
 func play_on_enter(body:Node3D, note, length):
 	if not JamJam._current_voice:
-		JamJam.set_voice("midi.piano1")
+		JamJam.set_voice("midi.piano1", "keyboard")
 	JamJam.play(note, length)
 	JamJam.haptics(body)
