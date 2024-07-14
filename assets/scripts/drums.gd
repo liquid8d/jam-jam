@@ -2,11 +2,7 @@ extends Node3D
 
 var kit 
 
-var left_controller:XRController3D
-var right_controller:XRController3D
-
 func _ready():
-	find_controllers()
 	kit = [
 		{ name = "Floor Tom", node = $DrumAArea, shaker = $drum_kit_separate/DrumA/ShakerComponent3D, voice = "midi.drum41", note = 10, length = 8 },
 		{ name = "Snare", node = $DrumBArea, shaker = $drum_kit_separate/DrumB/ShakerComponent3D, voice = "valsound.percus30", note = 20, length = 8 },
@@ -22,12 +18,6 @@ func _ready():
 		if drum.node:
 			drum.node.body_entered.connect(play_on_enter.bindv([drum]))
 
-func find_controllers():
-	var player = get_node("/root/Room/XrPlayer")
-	left_controller = XRHelpers.get_left_controller(player)
-	right_controller = XRHelpers.get_right_controller(player)
-	
-
 func play_on_enter(body:Node3D, drum):
 	#print("play on enter: ")
 	#print (drum.name)
@@ -41,18 +31,7 @@ func play_on_enter(body:Node3D, drum):
 	JamJam.play(drum.note, drum.length)
 	if drum.has("shaker"):
 		(drum.shaker as ShakerComponent3D).play_shake()
-	if not left_controller or not right_controller:
-		find_controllers()
-	if body.has_meta("hand"):
-		match body.get_meta("hand"):
-			"left":
-				if left_controller:
-					#print("left haptic!")
-					left_controller.trigger_haptic_pulse("haptic", 0.1, 0.1, 0.2, 0.2)
-			"right":
-				if right_controller:
-					#print("right haptic!")
-					right_controller.trigger_haptic_pulse("haptic", 0.1, 0.1, 0.2, 0.2)
+	JamJam.haptics(body)
 
 func _on_drumstick_grabbed(pickable: Variant, by: Variant) -> void:
 	print("drumstick picked up", by.name)

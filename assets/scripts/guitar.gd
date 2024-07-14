@@ -28,6 +28,7 @@ func _ready() -> void:
 							print_rich("[color=red]missing string %s fret %s[/color]" % [string, fret_num])
 
 func _fret_on(body, string:int, fret:int):
+	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
 	if body.name == "PokeBody" or body.is_in_group("PlayerHands"): 
@@ -39,6 +40,7 @@ func _fret_on(body, string:int, fret:int):
 		print(body)
 
 func _fret_off(body, string:int, fret:int):
+	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
 	if body.name == "PokeBody" or body.is_in_group("PlayerHands"):
@@ -52,6 +54,7 @@ func _fret_off(body, string:int, fret:int):
 		print(body)
 
 func _play_string(body, string:int):
+	# HACK can't find why guitar body collider is colliding with frets/string colliders
 	if body.name == "GuitarPickableObject":
 		return
 	if body.name == "PokeBody" or body.is_in_group("PlayerHands") or body.is_in_group("guitar_pick"):
@@ -63,6 +66,7 @@ func _play_string(body, string:int):
 		var note = starting_note + string * fret + ((string - 1) * 24)
 		print_rich("[color=orange]string pick: %s[/color] fret: [color=green]%s[/color] note [color=blue]%s[/color]" % [string, fret, note])
 		play_note(note)
+		JamJam.haptics(body)
 	else:
 		print("body hit string, but not playerhands or guitar pick")
 		print(body)

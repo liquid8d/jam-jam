@@ -76,6 +76,8 @@ const presets = [
 var driver := SiONDriver.create()
 var preset := SiONVoicePresetUtil.new()
 var voice:SiONVoice
+var left_controller:XRController3D
+var right_controller:XRController3D
 
 var _current_voice = "" :
 	set(value):
@@ -88,6 +90,8 @@ func _ready() -> void:
 	
 	# start the driver
 	driver.play(null, false)
+	
+	find_controllers()
 	
 	## Test Pattern
 	#driver.play("t100 l8 [ ccggaag4 ffeeddc4 | [ggffeed4]2 ]2")
@@ -103,6 +107,26 @@ func play(note, length:float = 16):
 	driver.volume
 	driver.note_on(note, voice, length)
 	#driver.play("t100 l8 [ ccggaag4 ffeeddc4 | [ggffeed4]2 ]2")
+
+func find_controllers():
+	var player = get_node("/root/Room/XrPlayer")
+	left_controller = XRHelpers.get_left_controller(player)
+	right_controller = XRHelpers.get_right_controller(player)
+
+func haptics(body):
+	print("try haptics with body: ", body.name)
+	if body.has_meta("hand"):
+		if not left_controller or not right_controller:
+			find_controllers()
+		match body.get_meta("hand"):
+			"left":
+				if left_controller:
+					#print("left haptic!")
+					left_controller.trigger_haptic_pulse("haptic", 0.1, 0.1, 0.2, 0.2)
+			"right":
+				if right_controller:
+					#print("right haptic!")
+					right_controller.trigger_haptic_pulse("haptic", 0.1, 0.1, 0.2, 0.2)
 
 func set_voice(voice:String):
 	_current_voice = voice
