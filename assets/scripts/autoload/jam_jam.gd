@@ -32,6 +32,7 @@ const presets = [
 	{ name = "drumkit.1", label = "Simple Drumkit", type = "DRUMKIT", instrument = "drums" },
 	{ name = "drumkit.2", label = "SiON Drumkit", type = "DRUMKIT", instrument = "drums" },
 	{ name = "drumkit.3", label = "Midi Drumkit", type = "DRUMKIT", instrument = "drums" },
+	{ name = "valsound.lead2", label = "Default", type = "LEAD", instrument = "guitar" },
 	{ name = "midi.guitar1", label = "Nylon", type = "MIDI", instrument = "guitar" },
 	{ name = "midi.guitar2", label = "Steel", type = "MIDI", instrument = "guitar" },
 	{ name = "midi.guitar3", label = "Jazz", type = "MIDI", instrument = "guitar" },
@@ -69,6 +70,8 @@ const presets = [
 	{ name = "valsound.guitar17", label = "METAL", type = "GUITAR", instrument = "guitar" },
 	{ name = "valsound.guitar18", label = "Soft Dis.Guitar", type = "GUITAR", instrument = "guitar" },
 ]
+# guitar F.Strings 1, Steel Guitar
+# bass Chopper Bass 3, Finger Bass, Banjo (Harpci), Sin water synth, F.Strings 4
 
 var driver := SiONDriver.create()
 var preset := SiONVoicePresetUtil.new()
@@ -87,15 +90,15 @@ func _ready() -> void:
 	driver.play(null, false)
 	
 	## Test Pattern
-	#set_voice("bassdrumm")
 	#driver.play("t100 l8 [ ccggaag4 ffeeddc4 | [ggffeed4]2 ]2")
 	#await get_tree().create_timer(3).timeout
-	#for i in range(45, 61):
-		#set_voice("bassdrumm")
-		#play(i)
+	#for i in range(30, 120):
+##		valsound.percus25 65, 71, 85
+		#set_voice("valsound.percus25")
+		#play(i, 2000)
 		#await get_tree().create_timer(1).timeout
 	
-func play(note, length:float = 64):
+func play(note, length:float = 16):
 	print("play note %s on %s" % [note, _current_voice])
 	driver.volume
 	driver.note_on(note, voice, length)
