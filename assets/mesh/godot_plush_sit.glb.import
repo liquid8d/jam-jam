@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://boj78hrp3hmvv"
-path="res://.godot/imported/godot_plushie_animated.glb-e463225ab272e6a0c39850f8d03c53a4.scn"
+uid="uid://d22x4dgmgjbql"
+path="res://.godot/imported/godot_plush_sit.glb-66669ef90f024a5ee1d9dd83e03a32e4.scn"
 
 [deps]
 
-source_file="res://assets/mesh/godot_plushie_animated.glb"
-dest_files=["res://.godot/imported/godot_plushie_animated.glb-e463225ab272e6a0c39850f8d03c53a4.scn"]
+source_file="res://assets/mesh/godot_plush_sit.glb"
+dest_files=["res://.godot/imported/godot_plush_sit.glb-66669ef90f024a5ee1d9dd83e03a32e4.scn"]
 
 [params]
 
