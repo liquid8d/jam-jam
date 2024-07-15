@@ -33,6 +33,11 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 [global_group]
 
 guitar_pick=""
+fingertip=""
+
+[godot_xr_tools]
+
+player/standard_height=1.8
 
 [importer_defaults]
 
@@ -86,5 +91,8 @@ textures/vram_compression/import_etc2_astc=true
 [xr]
 
 openxr/enabled=true
+openxr/foveation_level=2
+openxr/foveation_dynamic=true
+openxr/submit_depth_buffer=true
 openxr/startup_alert=false
 shaders/enabled=true
