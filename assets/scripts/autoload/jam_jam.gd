@@ -152,7 +152,7 @@ func play(note, length:float = 16):
 	#driver.play("t100 l8 [ ccggaag4 ffeeddc4 | [ggffeed4]2 ]2")
 
 func find_controllers():
-	var player = get_node("/root/Room/XrPlayer")
+	var player = get_node("/root/Room/XRPlayer")
 	left_controller = XRHelpers.get_left_controller(player)
 	right_controller = XRHelpers.get_right_controller(player)
 
